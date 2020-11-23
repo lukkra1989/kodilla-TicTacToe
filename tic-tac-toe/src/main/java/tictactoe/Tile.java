@@ -1,9 +1,5 @@
 package tictactoe;
 
-import tictactoe.logic.Ai;
-import tictactoe.logic.BoardIndex;
-import tictactoe.logic.JavaFxBoardToLogicBoardConverter;
-import tictactoe.logic.Player;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
@@ -11,6 +7,10 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import tictactoe.logic.Ai;
+import tictactoe.logic.BoardIndex;
+import tictactoe.logic.JavaFxBoardToLogicBoardConverter;
+import tictactoe.logic.Player;
 
 import java.util.Random;
 
@@ -36,7 +36,7 @@ public class Tile extends StackPane {
 
     Tile(FieldValue fieldValue, Ai aiAlgorithm) {
         this.fieldValue = fieldValue;
-        this.aiAlgorithm=aiAlgorithm;
+        this.aiAlgorithm = aiAlgorithm;
 
         Rectangle rectangle = new Rectangle();
         rectangle.setHeight(200);
@@ -72,15 +72,14 @@ public class Tile extends StackPane {
                     }
                 }
                 //AI
-                JavaFxBoardToLogicBoardConverter javaFxBoardToLogicBoardConverter=new JavaFxBoardToLogicBoardConverter();
-                BoardIndex boardIndex=this.aiAlgorithm.calculateMove(javaFxBoardToLogicBoardConverter.convert(TheGame.board,FieldValue.CROSS), Player.COMPUTER);
+                JavaFxBoardToLogicBoardConverter javaFxBoardToLogicBoardConverter = new JavaFxBoardToLogicBoardConverter();
+                BoardIndex boardIndex = this.aiAlgorithm.calculateMove(javaFxBoardToLogicBoardConverter.convert(TheGame.board, FieldValue.CROSS), Player.COMPUTER);
 
-                Tile tile=TheGame.board.fields[boardIndex.getI()][boardIndex.getJ()];
+                Tile tile = TheGame.board.fields[boardIndex.getI()][boardIndex.getJ()];
                 Rectangle node = (Rectangle) tile.getChildren().get(0);
                 tile.setFieldValue(FieldValue.CIRCLE);
                 node.setFill(new ImagePattern(circle));
                 TheGame.turnX = true;
-                //Logic calculation
                 checkState();
             }
 

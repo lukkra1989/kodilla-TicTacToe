@@ -1,8 +1,5 @@
 package tictactoe;
 
-import tictactoe.logic.Ai;
-import tictactoe.logic.MediumAi;
-import tictactoe.logic.RandomAi;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Parent;
@@ -14,11 +11,11 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import tictactoe.logic.MediumAi;
+import tictactoe.logic.RandomAi;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
-
-import static tictactoe.State.aiAlgorithm;
 
 
 public class TheGame extends Application {
@@ -43,7 +40,6 @@ public class TheGame extends Application {
         root.setPrefSize(600, 780);
         root.setBackground(background);
 
-        /////       BUTTON EASY LEVEL     //////////
         Button easyLevel = new Button();
         easyLevel.setText("Play: Level Easy");
         easyLevel.setFont(new Font("Arial Black", 15));
@@ -51,16 +47,9 @@ public class TheGame extends Application {
         easyLevel.setLayoutY(600);
         easyLevel.setPrefSize(185, 49);
         easyLevel.setOnAction(action -> {
-//            vsComputer = true;
-//            playerO.setCount(0);
-//            playerX.setCount(0);
-//            counter.setText("X  [" + playerX.getCount()
-//                    + "] : [" + playerO.getCount() + "]  O");
-//            vsWho.setText("PLAY vs EASY COMPUTER");
             State.gameReset(new RandomAi());
         });
 
-        ////////////   BUTTON HARD LEVEL  ///////////
         Button hardLevel = new Button();
         hardLevel.setText("Play: Level Hard");
         hardLevel.setFont(new Font("Arial Black", 15));
@@ -68,28 +57,16 @@ public class TheGame extends Application {
         hardLevel.setLayoutY(650);
         hardLevel.setPrefSize(185, 49);
         hardLevel.setOnAction(action -> {
-//            vsComputer = true;
-//            playerO.setCount(0);
-//            playerX.setCount(0);
-//            counter.setText("X  [" + playerX.getCount()
-//                    + "] : [" + playerO.getCount() + "]  O");
-//            vsWho.setText("PLAYER vs HARD COMPUTER");
             State.gameReset(new MediumAi());
         });
 
         Button playAgain = new Button();
         playAgain.setText("Play Again");
-        //playAgain.setWrapText(true);
         playAgain.setFont(new Font("Arial Black", 15));
         playAgain.setLayoutX(450);
         playAgain.setLayoutY(601);
         playAgain.setPrefSize(150, 49);
         playAgain.setOnAction(action -> {
-//           vsComputer = true;
-//            playerO.setCount(0);
-//            playerX.setCount(0);
-//            counter.setText("X  [" + playerX.getCount()
-//                    + "] : [" + playerO.getCount() + "]  O");
             State.gameReset();
         });
 

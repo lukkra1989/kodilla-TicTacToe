@@ -18,7 +18,7 @@ public class LogicBoard {
     }
 
     public boolean setToken(int i, int j, Player player) {
-        if(grid[i][j]!=Player.BLANK){
+        if (grid[i][j] != Player.BLANK) {
             return false;
         }
         grid[i][j] = player;

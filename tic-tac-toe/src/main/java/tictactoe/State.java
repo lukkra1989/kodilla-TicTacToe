@@ -1,8 +1,8 @@
 package tictactoe;
 
-import tictactoe.logic.Ai;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import tictactoe.logic.Ai;
 
 public class State {
 
