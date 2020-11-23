@@ -21,11 +21,4 @@ public enum Player {
         }
     }
 
-    public static Player valueOf(int pageType) {
-        return (Player) map.get(pageType);
-    }
-
-    public int getValue() {
-        return value;
-    }
 }

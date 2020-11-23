@@ -4,10 +4,6 @@ public class LogicBoard {
 
     private Player grid[][];
 
-    public LogicBoard(Player[][] grid) {
-        this.grid = grid;
-    }
-
     public LogicBoard() {
         grid = new Player[3][3];
         for (int i = 0; i < 3; i++) {

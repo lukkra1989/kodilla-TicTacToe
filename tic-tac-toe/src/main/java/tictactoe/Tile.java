@@ -106,11 +106,6 @@ public class Tile extends StackPane {
         });
     }
 
-    public int randomNumber(int limit) {
-        Random generator = new Random();
-        return generator.nextInt(limit);
-    }
-
     public void checkState() {
         Score score = State.gameResult();
         System.out.println(score);
