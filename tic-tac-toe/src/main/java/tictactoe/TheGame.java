@@ -1,5 +1,6 @@
 package tictactoe;
 
+import tictactoe.logic.Ai;
 import tictactoe.logic.MediumAi;
 import tictactoe.logic.RandomAi;
 import javafx.application.Application;
@@ -16,6 +17,8 @@ import javafx.stage.Stage;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
+
+import static tictactoe.State.aiAlgorithm;
 
 
 public class TheGame extends Application {
@@ -40,17 +43,6 @@ public class TheGame extends Application {
         root.setPrefSize(600, 780);
         root.setBackground(background);
 
-        Button playAgain = new Button();
-        playAgain.setText("Play Again");
-        playAgain.setFont(new Font("Arial Black", 15));
-        playAgain.setLayoutX(450);
-        playAgain.setLayoutY(601);
-        playAgain.setPrefSize(150, 49);
-        playAgain.setOnAction(action -> {
-            State.gameReset(null);
-        });
-
-
         /////       BUTTON EASY LEVEL     //////////
         Button easyLevel = new Button();
         easyLevel.setText("Play: Level Easy");
@@ -59,12 +51,12 @@ public class TheGame extends Application {
         easyLevel.setLayoutY(600);
         easyLevel.setPrefSize(185, 49);
         easyLevel.setOnAction(action -> {
-            vsComputer = true;
-            playerO.setCount(0);
-            playerX.setCount(0);
-            counter.setText("X  [" + playerX.getCount()
-                    + "] : [" + playerO.getCount() + "]  O");
-            vsWho.setText("PLAY vs EASY COMPUTER");
+//            vsComputer = true;
+//            playerO.setCount(0);
+//            playerX.setCount(0);
+//            counter.setText("X  [" + playerX.getCount()
+//                    + "] : [" + playerO.getCount() + "]  O");
+//            vsWho.setText("PLAY vs EASY COMPUTER");
             State.gameReset(new RandomAi());
         });
 
@@ -76,14 +68,29 @@ public class TheGame extends Application {
         hardLevel.setLayoutY(650);
         hardLevel.setPrefSize(185, 49);
         hardLevel.setOnAction(action -> {
-            vsComputer = true;
-            playerO.setCount(0);
-            playerX.setCount(0);
-            counter.setText("X  [" + playerX.getCount()
-                    + "] : [" + playerO.getCount() + "]  O");
-            //    vsWho.setText("PLAYER vs COMPUTER");
-            vsWho.setText("PLAYER vs HARD COMPUTER");
+//            vsComputer = true;
+//            playerO.setCount(0);
+//            playerX.setCount(0);
+//            counter.setText("X  [" + playerX.getCount()
+//                    + "] : [" + playerO.getCount() + "]  O");
+//            vsWho.setText("PLAYER vs HARD COMPUTER");
             State.gameReset(new MediumAi());
+        });
+
+        Button playAgain = new Button();
+        playAgain.setText("Play Again");
+        //playAgain.setWrapText(true);
+        playAgain.setFont(new Font("Arial Black", 15));
+        playAgain.setLayoutX(450);
+        playAgain.setLayoutY(601);
+        playAgain.setPrefSize(150, 49);
+        playAgain.setOnAction(action -> {
+//           vsComputer = true;
+//            playerO.setCount(0);
+//            playerX.setCount(0);
+//            counter.setText("X  [" + playerX.getCount()
+//                    + "] : [" + playerO.getCount() + "]  O");
+            State.gameReset();
         });
 
         Button vsPlay = new Button();
@@ -132,7 +139,7 @@ public class TheGame extends Application {
         vsWho.setLayoutY(671);
 
         root.getChildren().addAll(Arrays.stream(board.fields).flatMap(Arrays::stream).collect(Collectors.toList()));
-        root.getChildren().addAll(quit, vsPlay, hardLevel, easyLevel, playAgain,label, counter, vsWho);
+        root.getChildren().addAll(quit, vsPlay, hardLevel, easyLevel, playAgain, label, counter, vsWho);
         return root;
     }
 

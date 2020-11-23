@@ -7,14 +7,17 @@ import javafx.scene.shape.Rectangle;
 public class State {
 
     public static Ai aiAlgorithm;
-
+    public static void gameReset(){
+        gameReset(null);
+    }
     public static void gameReset(Ai aiAlgorithm) {
         Tile[][] fields = TheGame.board.fields;
 
         for (int y = 0; y < 3; y++) {
             for (int x = 0; x < 3; x++) {
                 fields[x][y].setFieldValue(FieldValue.EMPTY);
-                fields[x][y].setAiAlgorithm(aiAlgorithm);
+                if(aiAlgorithm!=null){
+                fields[x][y].setAiAlgorithm(aiAlgorithm);}
                 Rectangle node = (Rectangle) fields[x][y].getChildren().get(0);
                 node.setFill(null);
             }
