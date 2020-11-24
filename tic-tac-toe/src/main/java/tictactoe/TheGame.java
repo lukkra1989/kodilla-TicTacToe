@@ -27,8 +27,8 @@ public class TheGame extends Application {
     public static Label label = new Label();
     public static Label vsWho = new Label();
     public static Label counter = new Label();
-//    public static Counter playerX = new Counter(0);
-//    public static Counter playerO = new Counter(0);
+    public static Counter playerX = new Counter(0);
+    public static Counter playerO = new Counter(0);
     public static boolean vsComputer = true;
 
     private static Parent createScene() {
@@ -47,6 +47,12 @@ public class TheGame extends Application {
         easyLevel.setLayoutY(600);
         easyLevel.setPrefSize(185, 49);
         easyLevel.setOnAction(action -> {
+            vsComputer = true;
+            playerO.setCount(0);
+            playerX.setCount(0);
+            counter.setText("X  [" + playerX.getCount()
+                    + "] : [" + playerO.getCount() + "]  O");
+            vsWho.setText("PLAY vs EASY COMPUTER");
             State.gameReset(new RandomAi());
         });
 
@@ -57,6 +63,12 @@ public class TheGame extends Application {
         hardLevel.setLayoutY(650);
         hardLevel.setPrefSize(185, 49);
         hardLevel.setOnAction(action -> {
+            vsComputer = true;
+            playerO.setCount(0);
+            playerX.setCount(0);
+            counter.setText("X  [" + playerX.getCount()
+                    + "] : [" + playerO.getCount() + "]  O");
+            vsWho.setText("PLAYER vs HARD COMPUTER");
             State.gameReset(new MediumAi());
         });
 
@@ -79,10 +91,10 @@ public class TheGame extends Application {
         vsPlay.setPrefSize(185, 49);
         vsPlay.setOnAction(action -> {
             vsComputer = false;
-//            playerX.setCount(0);
-//            playerO.setCount(0);
-//            counter.setText("X  [" + playerX.getCount()
-//                    + "] : [" + playerO.getCount() + "]  O");
+            playerX.setCount(0);
+            playerO.setCount(0);
+            counter.setText("X  [" + playerX.getCount()
+                    + "] : [" + playerO.getCount() + "]  O");
             vsWho.setText("PLAYER VS PLAYER2");
             State.gameReset(null);
         });
@@ -102,6 +114,18 @@ public class TheGame extends Application {
         label.setFont(new Font("Arial Black", 30));
         label.layoutXProperty().bind(root.widthProperty().subtract(label.widthProperty()).divide(2));
         label.setLayoutY(605);
+
+        counter.setText("X  [" + playerX.getCount() + "] : [" + playerO.getCount() + "]  O");
+        counter.setTextFill(Color.BLACK);
+        counter.setFont(new Font("Arial Black", 30));
+        counter.layoutXProperty().bind(root.widthProperty().subtract(counter.widthProperty()).divide(2));
+        counter.setLayoutY(638);
+
+        vsWho.setText("YOU vs. COMPUTER");
+        vsWho.setTextFill(Color.GREEN);
+        vsWho.setFont(new Font("Arial Black", 15));
+        vsWho.layoutXProperty().bind(root.widthProperty().subtract(vsWho.widthProperty()).divide(2));
+        vsWho.setLayoutY(671);
 
         root.getChildren().addAll(Arrays.stream(board.fields).flatMap(Arrays::stream).collect(Collectors.toList()));
         root.getChildren().addAll(quit, vsPlay, hardLevel, easyLevel, playAgain, label, counter, vsWho);

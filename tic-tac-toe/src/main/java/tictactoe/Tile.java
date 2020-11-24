@@ -12,8 +12,6 @@ import tictactoe.logic.BoardIndex;
 import tictactoe.logic.JavaFxBoardToLogicBoardConverter;
 import tictactoe.logic.Player;
 
-import java.util.Random;
-
 public class Tile extends StackPane {
 
     private static Image cross = new Image("file:src/main/resources/cross.png");
@@ -110,14 +108,18 @@ public class Tile extends StackPane {
         Score score = State.gameResult();
         System.out.println(score);
         if (score == Score.O_WIN) {
-
+            TheGame.playerO.setCount(TheGame.playerO.getCount() + 1);
+            TheGame.counter.setText("X  [" + TheGame.playerX.getCount()
+                    + "] : [" + TheGame.playerO.getCount() + "] O");
             TheGame.possibleMove = false;
             TheGame.label.setText(" O WINS !!!");
             TheGame.label.setTextFill(Color.BLACK);
             return;
         }
         if (score == Score.X_WIN) {
-
+            TheGame.playerX.setCount(TheGame.playerX.getCount() + 1);
+            TheGame.counter.setText("X  [" + TheGame.playerX.getCount()
+                    + "] : [" + TheGame.playerO.getCount() + "]  O");
             TheGame.possibleMove = false;
             TheGame.label.setText("X WINS !!!");
             TheGame.label.setTextFill(Color.RED);

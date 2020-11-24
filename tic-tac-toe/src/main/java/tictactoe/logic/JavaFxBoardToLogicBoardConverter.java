@@ -19,7 +19,7 @@ public class JavaFxBoardToLogicBoardConverter {
                 } else {
                     convertedPlayer = Player.COMPUTER;
                 }
-                logicBoard.setToken(i, j, convertedPlayer);
+                logicBoard.placeToken(i, j, convertedPlayer);
             }
         }
         return logicBoard;

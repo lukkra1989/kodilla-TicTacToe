@@ -13,12 +13,16 @@ public class LogicBoard {
         }
     }
 
-    public boolean setToken(int i, int j, Player player) {
+    public boolean placeToken(int i, int j, Player player) {
         if (grid[i][j] != Player.BLANK) {
             return false;
         }
         grid[i][j] = player;
         return true;
+    }
+
+    public void clearToken(int i, int j){
+        grid[i][j]=Player.BLANK;
     }
 
     public Player getToken(int i, int j) {

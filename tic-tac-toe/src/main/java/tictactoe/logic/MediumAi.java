@@ -18,9 +18,9 @@ public class MediumAi implements Ai {
             for (int j = 0; j < 3; j++) {
 
                 if (logicBoard.getToken(i, j) == Player.BLANK) {
-                    logicBoard.setToken(i, j, player);
+                    logicBoard.placeToken(i, j, player);
                     GameState predictedGameState = logicBoard.calculateGameState();
-                    logicBoard.setToken(i, j, Player.BLANK);
+                    logicBoard.clearToken(i, j);
                     if (predictedGameState == GameState.COMPUTER_WIN) {
                         return new BoardIndex(i, j);
                     }
